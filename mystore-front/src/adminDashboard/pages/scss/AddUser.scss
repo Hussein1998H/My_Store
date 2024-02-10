@@ -1,0 +1,48 @@
+.containt{
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fefafa;
+
+    .formContainer{
+        background-image: 
+        linear-gradient(
+     110deg,
+    white 0%,
+    white 65%,
+    transparent 35%
+  ),
+  url('../../img1.jpg'),;
+        background-attachment:fixed;
+        background-size: cover;
+        width: 70%;
+        padding: 15px;
+        border-radius: 5px;
+
+        .form{
+            width: 50%;
+            padding: 15px;
+            height: 100%;
+
+
+            .formTitle{
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            .item{
+                text-decoration: none;
+                padding: 0.5rem;
+                color: #000000A6;
+                transition: 0.5s ease ;
+            
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+    }
+}
+.tableUser{
+    text-align: center;
+}

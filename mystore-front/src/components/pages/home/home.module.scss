@@ -1,0 +1,40 @@
+.home {
+    .categories {
+        margin: 5px;
+        justify-content: center;
+        .item {
+            cursor: pointer;
+        }
+        .item.active {
+            background-color: black;
+            color: white;
+        }
+    }
+    .products {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        .product {
+            width: 18rem;
+            height: 425px;
+            margin: 3px;
+            .image {
+                height: 200px;
+                object-fit: cover;
+            }
+            .item{
+                text-decoration: none;
+                padding: 0.5rem;
+                color: white;
+                transition: 0.5s ease ;
+            
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+       
+    }
+}

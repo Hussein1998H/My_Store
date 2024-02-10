@@ -1,0 +1,17 @@
+.containt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formprod{
+    padding: 20px;
+    width: 75%;
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    .imgprod{
+        width:200px;
+        height:100%;
+        border-radius: 5px;
+        object-fit: fill;
+    }
+}

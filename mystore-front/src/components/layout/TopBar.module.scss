@@ -1,0 +1,31 @@
+.item{
+    text-decoration: none;
+    padding: 0.5rem;
+    color: #000000A6;
+    transition: 0.5s ease ;
+
+    &:hover{
+        color: black;
+    }
+}
+.cartItem{
+display: block;
+font-weight: bold;
+color: blue;
+border: 1px solid blue;
+border-radius: 5px;
+text-align: center;
+text-decoration: none;
+transition: 0.5s ease ;
+padding: 10px;
+
+
+
+&:hover{
+    color: white;
+    background-color: blue;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+}
