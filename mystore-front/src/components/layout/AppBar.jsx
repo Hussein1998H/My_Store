@@ -28,14 +28,16 @@ function AppBar() {
    async function getData() {
 
     try {
-        let res=axios.get(`${BaseUrl}/${EndPoint.profile}`,{
-            headers:{
-                Authorization:`Bearer ${token}`
-            }
-        })
-        .then(response=>{
-            setData(response.data.data)
-        })
+ if (token) {
+    let res=axios.get(`${BaseUrl}/${EndPoint.profile}`,{
+        headers:{
+            Authorization:`Bearer ${token}`
+        }
+    })
+    .then(response=>{
+        setData(response.data.data)
+    })
+ }
     } catch (error) {
         console.log(error);
     }
@@ -85,7 +87,7 @@ function AppBar() {
                   </>:
                   <>
                   <NavLink className='nav-link' to={'/my-order'}>My Order</NavLink>
-                 <NavLink className='nav-link' to={'/'}>{data.name}</NavLink>
+                 <NavLink className='nav-link' to={'/'}>{data!==''?data.name:null}</NavLink>
                   </>
                   }
                     </Nav>

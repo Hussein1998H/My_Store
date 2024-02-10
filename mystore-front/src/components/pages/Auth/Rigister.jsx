@@ -19,6 +19,7 @@ const Rigister = () => {
   const[show,SetShow]=useState(false);
 const[errorMsg,setErrorMsg]=useState('');
   const cookie=new Cookies();
+  let products=[];
   let nav=useNavigate()
   function handleChange(e) {
   
@@ -33,6 +34,8 @@ const[errorMsg,setErrorMsg]=useState('');
         let res=await axios.post(`${BaseUrl}/${EndPoint.register}`,form);
         if (res.status===200) {
           cookie.set('bearer',res.data.token)
+          cookie.set('products',products)
+
           nav('/')
         }
       } catch (error) {

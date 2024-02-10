@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import { BaseUrl, EndPoint } from '../../Api/Api';
 import "../Dashbiard.scss"
 import "./scss/AddUser.scss"
 import SAlert from '../components/SAlert';
+import { toggel } from '../../Context/ToggelConstext';
 
 const AddUser = () => {
   const[form,setForm]=useState({
@@ -17,6 +18,7 @@ const AddUser = () => {
   });
   const[accept,SetAccept]=useState(false);
   const[show,SetShow]=useState(false);
+  const {isToggled,ToggelUpdate}=useContext(toggel)
   const cookie=new Cookies();
   const token =cookie.get('bearer')
   let nav=useNavigate()
@@ -56,7 +58,8 @@ const AddUser = () => {
   
     }
   return (
-    <div className={'containt layout'}>
+    <div className={'containt layout'}  style={isToggled===true?{width:'100%'}:null}
+>
         {show&&<SAlert title={'User ADD '} body={'User Add Successfully'} color='success'/>}
         
       <div className={'formContainer'}>

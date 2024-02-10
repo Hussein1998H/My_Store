@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SAlert from '../components/SAlert'
 import Cart from '../components/Cart'
+import "../Dashbiard.scss"
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { BaseUrl, EndPoint } from '../../Api/Api';
+import { toggel } from '../../Context/ToggelConstext';
 
 const AllCategories = () => {
     const[categories,setCategories]=useState([]);
       const[show,SetShow]=useState(false);
+      const {isToggled,ToggelUpdate}=useContext(toggel)
+
 
     const[count,setCount]=useState(0);
     const cookie=new Cookies();
@@ -33,9 +37,9 @@ const AllCategories = () => {
             SetShow(false)
         },1000)
     },[count])
-
+   
   return (
-    <div className=' content layout' >
+    <div className=' content layout'  style={isToggled===true?{width:'100%'}:null}>
          {show&&<SAlert style={{justifyContent:'center'}} title={'Delete Product '} body={'Category Delete Successfully'} color='danger'/>}
 
         {

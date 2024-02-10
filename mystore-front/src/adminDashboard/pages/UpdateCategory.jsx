@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../Dashbiard.scss"
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -11,6 +11,7 @@ import { BaseUrl, EndPoint } from '../../Api/Api';
 import Cookies from 'universal-cookie';
 import SAlert from '../components/SAlert';
 import { useNavigate } from 'react-router-dom';
+import { toggel } from '../../Context/ToggelConstext';
 
 const UpdateCategory = () => {
     const[desc,setDesc]=useState('')
@@ -20,7 +21,7 @@ const UpdateCategory = () => {
     const[show,SetShow]=useState(false);
     const[showImg,SetShowImg]=useState(false);
     const[accept,SetAccept]=useState(false);
-
+    const {isToggled,ToggelUpdate}=useContext(toggel)
     
   const cookie =new Cookies()
   const token=cookie.get('bearer')
@@ -95,7 +96,8 @@ useEffect(()=>{
   };
 
   return (
-    <div  className="containt layout">
+    <div  className="containt layout"    style={isToggled===true?{width:'100%'}:null}
+>
     {show && <SAlert title={'Product Add'} body={'CAtegory Update Successfully'} color={'primary'}/>}
      <Form className='formprod' onSubmit={Submit}>
       <Form.Group style={{textAlign:'center'}}>

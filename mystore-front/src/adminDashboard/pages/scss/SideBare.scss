@@ -1,11 +1,30 @@
 .side-bare{
-    height: calc(100vh - 60px);
+    height: calc(100lvh - 60px);
     padding: 10px;
     width: 350px;
     box-shadow: 0px 0px 2px 0px goldenrod;
     transition: all .3s;
 
-
+.toggelcontainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .toggelbtn{
+        display: block;
+        padding: 15px 25px;
+         font-size: 24px;
+         color:#333;
+        transition: .3s;
+        &:hover{
+            background-color: rgba(255, 224, 147, 0.277);
+            border-radius: 5px;
+         
+            }
+    }
+}
+.hidden{
+    display: none;
+}
 }
 .side-bare .link{
  display: block;

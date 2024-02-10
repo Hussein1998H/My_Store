@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../Dashbiard.scss"
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -10,6 +10,7 @@ import axios from 'axios';
 import { BaseUrl, EndPoint } from '../../Api/Api';
 import Cookies from 'universal-cookie';
 import SAlert from '../components/SAlert';
+import { toggel } from '../../Context/ToggelConstext';
 const AddProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const[getCat,setGetCat]=useState([]);
@@ -18,9 +19,11 @@ const AddProduct = () => {
   const[category,setCategory]=useState('')
   const[price,setPrice]=useState('')
   const[image,setImage]=useState('')
+  const[errorMsg,setErrorMsg]=useState('')
   const[show,SetShow]=useState(false);
   const[accept,SetAccept]=useState(false);
-
+  const {isToggled,ToggelUpdate}=useContext(toggel)
+  
 const cookie =new Cookies()
 const token=cookie.get('bearer')
 
@@ -70,6 +73,7 @@ const token=cookie.get('bearer')
       }
     }
    } catch (error) {
+    setErrorMsg(error.response.data.Error.image)
     console.log(error);
    }
   }
@@ -90,7 +94,7 @@ const token=cookie.get('bearer')
 
 
   return (
-    <div  className="containt layout">
+    <div  className="containt layout"style={isToggled===true?{width:'100%'}:null}>
       {show && <SAlert title={'Product Add'} body={'product Add Successfully'} color={'success'}/>}
        <Form className='formprod' onSubmit={Submit}>
         <Form.Group style={{textAlign:'center'}}>
@@ -156,6 +160,8 @@ const token=cookie.get('bearer')
         <Form.Group as={Col} controlId="formFile"  className='mt-2'>
 
         <Form.Control type="file" size="lg"  onChange={handleImageChange} />
+        {errorMsg!==''? errorMsg :null}
+
         </Form.Group>
       </Row>
 

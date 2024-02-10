@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import { BaseUrl, EndPoint } from '../../Api/Api';
 import "../Dashbiard.scss"
 import "./scss/AddUser.scss"
 import SAlert from '../components/SAlert';
+import { toggel } from '../../Context/ToggelConstext';
 
 const UpdateUser = () => {
     
@@ -16,6 +17,7 @@ const UpdateUser = () => {
           email:'',
           password:'',
         });
+        const {isToggled,ToggelUpdate}=useContext(toggel)
         let user_id=window.location.pathname.split('/').slice(-1)[0];
 
         useEffect(()=>{
@@ -77,7 +79,8 @@ const UpdateUser = () => {
         
           }
   return (
-    <div className={'containt layout'}>
+    <div className={'containt layout'}  style={isToggled===true?{width:'100%'}:null}
+>
     {show&&<SAlert title={'User ADD '} body={'User Update Successfully'} color='primary'/>}
     
   <div className={'formContainer'}>

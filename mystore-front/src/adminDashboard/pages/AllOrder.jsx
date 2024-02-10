@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import "../Dashbiard.scss"
 import axios from 'axios';
@@ -8,10 +8,12 @@ import "./scss/AddUser.scss"
 import { Button } from 'react-bootstrap';
 import SAlert from '../components/SAlert';
 import { NavLink } from 'react-router-dom';
+import { toggel } from '../../Context/ToggelConstext';
 
 const AllOrder = () => {
   const[orders,setorders]=useState([])
   const[show,SetShow]=useState(false);
+  const {isToggled,ToggelUpdate}=useContext(toggel)
 
   const cookie=new Cookies();
   const token=cookie.get('bearer');
@@ -61,8 +63,9 @@ const AllOrder = () => {
       </td>
     </tr>
   })
+  
   return (
-    <div className='layout'>
+    <div className='layout'style={isToggled===true?{width:'100%'}:null}>
     {show&&<SAlert style={{justifyContent:'center'}} title={'Delete Order '} body={'Order Delete Successfully'} color='danger'/>}
 
     <Table striped bordered hover  className='tableUser' >

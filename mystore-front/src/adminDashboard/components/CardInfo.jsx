@@ -1,14 +1,15 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import "./CardInfo.scss"
-const CardInfo = ({Count,text,icon,color}) => {
+const CardInfo = ({Count,text,icon,color,shcolor}) => {
   return (
     <Card
           bg={color.toLocaleLowerCase()}
           key={'Success'.toLocaleLowerCase()}
           text={'Success' === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem',height:'15rem' }}
+          style={{ width: '18rem',height:'15rem', boxShadow:`${shcolor}-2px 30px 40px`,  }}
           className="mb-2 "
+        
         >
           {/* <Card.Header>Header</Card.Header> */}
           <Card.Body className='cardBody'>

@@ -24,6 +24,7 @@ import RequierAuth from "./components/pages/Auth/RequierAuth.js";
 import UserOrders from "./components/pages/UserOrders.jsx";
 import OrderDeatails from "./components/pages/OrderDeatails.jsx";
 import UserCart from "./components/pages/UserCart.jsx";
+import ToggelProvider from "./Context/ToggelConstext.js";
 
 export default function MyApp() {
     return <BrowserRouter>
@@ -46,7 +47,8 @@ export default function MyApp() {
                     <Route path='/admin' >
         <Route path='login' element={<AdminLogin/>}></Route>
         <Route element={<RequierAdminAuth/>}>
-       
+
+        
         <Route path='dashboard' element={<AdminDashboard/>}>
           <Route index path='home' element={<Home/>}></Route>
           {/* User */}
@@ -66,6 +68,7 @@ export default function MyApp() {
           <Route index path='all-order/:id' element={<UpdateOrder/>}></Route>
 
         </Route>
+
 
         </Route>
       </Route>

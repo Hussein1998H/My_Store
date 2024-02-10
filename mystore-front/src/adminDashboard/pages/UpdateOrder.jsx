@@ -1,10 +1,11 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Form, NavLink, useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 import { BaseUrl, EndPoint } from '../../Api/Api'
 import SAlert from '../components/SAlert'
 import { Button, Table } from 'react-bootstrap'
+import { toggel } from '../../Context/ToggelConstext'
 
 const UpdateOrder = () => {
     const [order,setOrder]=useState([])
@@ -12,6 +13,7 @@ const UpdateOrder = () => {
     const [count,setCount]=useState(0);
     const[show,SetShow]=useState(false);
     const [updateProd,setUpdateProd]=useState([])
+    const {isToggled,ToggelUpdate}=useContext(toggel)
     const cookie =new Cookies()
     const token=cookie.get('bearer')
     const nav=useNavigate()
@@ -78,7 +80,7 @@ const UpdateOrder = () => {
         <td>{el.product_object.categoryname}</td>
         <td>{el.product_object.price}</td>
         <td>{el.qty}</td>
-        <td> <input type="number" name="qty" id="qty"  placeholder={el.qty}  onChange={(e)=>{handelUpdate(el.product,e.target.value)}}/></td>
+        <td> <input type="number" name="qty" id="qty" className='form-control' min={-1} placeholder={el.qty}  onChange={(e)=>{handelUpdate(el.product,e.target.value)}}/></td>
         <td> 
 
           {/* <NavLink to={`${el.id}`}><Button variant="primary" className='mx-3 mt-1'>Edite</Button></NavLink> */}
@@ -94,7 +96,8 @@ const UpdateOrder = () => {
     console.log(user_id);
 
   return (
-    <div className='layout'>
+    <div className='layout'  style={isToggled===true?{width:'100%'}:null}
+>
     {show&&<SAlert style={{justifyContent:'center'}} title={' Order '} body={'Order update Successfully'} color='primary'/>}
 
     <Table striped bordered hover  className='tableUser' >

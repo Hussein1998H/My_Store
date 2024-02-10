@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 import SAlert from '../../adminDashboard/components/SAlert';
 import { useNavigate } from 'react-router-dom';
+import LoadingScreen from '../shared/LoadingScreen';
 
 const ProductDetails = () => {
 
@@ -41,7 +42,10 @@ const ProductDetails = () => {
     }
   console.log(myprod);
   return (
-    <div>
+    <>
+    {
+      product.length===0||product===null?<LoadingScreen/>:
+      <div>
 <section className="py-5">
     <div className="container">
     {show&&<SAlert style={{justifyContent:'center'}} title={' Order '} body={'Order update Successfully'} color='primary'/>}
@@ -129,6 +133,10 @@ const ProductDetails = () => {
     </div>
   </section>
     </div>
+    }
+    
+    </>
+    
   )
 }
 
