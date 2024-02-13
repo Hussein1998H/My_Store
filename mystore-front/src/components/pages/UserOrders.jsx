@@ -48,22 +48,25 @@ const UserOrders = () => {
     </tr>
      })
   return (
+orders.length===0 || orders===undefined?<h1> No Order Yet !</h1>:
     <div className='content'>
     {/* {show&&<SAlert style={{justifyContent:'center'}} title={'Delete Order '} body={'Order Delete Successfully'} color='danger'/>} */}
 
-    <Table striped bordered hover  className='tableUser' >
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Total</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tr===null?<div> No Orser Yet</div>:tr}
-      </tbody>
-    </Table>  
+ <Table striped bordered hover  className='tableUser' >
+ <thead>
+   <tr>
+     <th>#</th>
+     <th>Total</th>
+     <th>Date</th>
+     <th>Action</th>
+   </tr>
+ </thead>
+ <tbody>
+   {tr===null?<div> No Orser Yet</div>:tr}
+ </tbody>
+</Table>  
+
+   
         
         </div>
   )

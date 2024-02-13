@@ -61,6 +61,7 @@ function AppBar() {
         })
             cookie.remove('bearer');
             cookie.remove('products');
+            cookie.update();
       
             window.location.pathname='/';
       

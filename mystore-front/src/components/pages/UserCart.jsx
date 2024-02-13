@@ -6,6 +6,8 @@ import Cart from './Cart';
 import { Button } from 'react-bootstrap';
 import SAlert from '../../adminDashboard/components/SAlert';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeartCircleCheck, faHeartCirclePlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const UserCart = () => {
     const[products,setProducts]=useState([])
@@ -70,15 +72,19 @@ getProd()
 {show&&<SAlert style={{justifyContent:'center'}} title={' Order '} body={'Order ADD Successfully'} color='success'/>}
 
 </div>
-    <div className='pt-4 pb-4'>
-    <Button onClick={SaveCart} variant="outline-warning" className='mx-3 my-3'>Save</Button>
+    
+    {prod.length===0 ?<h1 style={{textAlign:'center'}}>No Products Yet </h1>:
+    <div className='pt-4 pb-4' style={{ borderBottom:' 1px solid gold'}}>
+    <Button onClick={SaveCart} variant="outline-warning" className='mx-3 my-3'>Save <FontAwesomeIcon icon={faHeartCircleCheck} /></Button>
     <Button onClick={() => {
         cookie.set('products',[])
               nav('/')
-    }} variant="outline-danger" className='mx-3 my-3'>Cansel</Button>
+    }} variant="outline-danger" className='mx-3 my-3'>Cansel <FontAwesomeIcon icon={faXmark} /></Button>
     </div>
+    }
+
     <div className=" row " style={{width:'100vw',gap:'50px',padding:'15px'}}>
-        {products!==undefined||products!==null?products.map((el,index)=>{
+        {products!==undefined||products.length!==0?products.map((el,index)=>{
             return <Cart key={index} products={el} color={'warning'}/>
         }):<h1>
             No Product yet </h1>}

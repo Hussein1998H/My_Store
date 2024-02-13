@@ -2,7 +2,7 @@
     height: calc(100lvh - 60px);
     padding: 10px;
     width: 350px;
-    box-shadow: 0px 0px 2px 0px goldenrod;
+    // box-shadow: 0px 0px 2px 0px goldenrod;
     transition: all .3s;
 
 .toggelcontainer{
@@ -41,6 +41,19 @@
 .side-bare .link:hover{
    background-color: rgba(255, 224, 147, 0.277);
    border-radius: 5px;
+
+//    .span{
+//     box-sizing: border-box;
+//     position: relative;
+//     width: 220px;
+//     text-align: center;
+//     top: -30px;
+//     left: 46px;
+//     z-index: 99;
+//     color: #ffcc8e;
+//     background-color: white;
+//     border-radius: 5px;
+//    }
 
    }
 
